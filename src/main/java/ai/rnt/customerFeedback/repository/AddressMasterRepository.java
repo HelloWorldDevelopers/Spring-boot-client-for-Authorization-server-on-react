@@ -1,0 +1,15 @@
+package ai.rnt.customerFeedback.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import ai.rnt.customerFeedback.entity.AddressMaster;
+
+public interface AddressMasterRepository extends JpaRepository<AddressMaster, Integer> {
+
+	@Query(value = "select * from address_master where customer_id = ?1", nativeQuery = true)
+	List<AddressMaster> findAllContactPersonOfCustomer(int customerId);
+
+}
